@@ -1,6 +1,6 @@
 # GT30 Pro Custom Backlight
 
-![Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Falphingj%2FGT-30-Pro-Custom-Backlight&count_bg=%2300C2FF&title_bg=%23111111&title=views&edge_flat=false)
+![Views](https://hitscounter.dev/api/hit?url=https%3A%2F%2Fgithub.com%2Falphingj%2FGT-30-Pro-Custom-Backlight&label=views&color=%2300C2FF)
 
 Custom rear-LED ("Mechanical Light Waves") controller for the **Infinix GT 30 Pro (X6873)**.
 A normal app cannot touch this LED (SELinux denies sysfs writes even to `shell`,
