@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">GT30 Light</string>
+    <string name="led_on">LED ON</string>
+    <string name="led_off">LED OFF</string>
+    <string name="effects">Effects</string>
+    <string name="settings">Settings</string>
+    <string name="shizuku_required">Shizuku permission required for advanced control</string>
+    <string name="shizuku_not_available">Shizuku not installed or not authorized</string>
+    <string name="led_status_on">LED is ON</string>
+    <string name="led_status_off">LED is OFF</string>
+    <string name="error_hardware_not_found">GT30 Pro LED hardware not detected</string>
+    <string name="effect_game_launch">Game Launch</string>
+    <string name="effect_notification">Notification</string>
+    <string name="effect_music">Music Visualizer</string>
+    <string name="effect_charging">Charging</string>
+    <string name="effect_camera">Camera</string>
+    <string name="custom_color">Custom Color</string>
+    <string name="brightness">Brightness</string>
+    <string name="speed">Speed</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="connect_shizuku">Connect Shizuku</string>
+    <string name="disconnect_shizuku">Refresh LED state</string>
+    <string name="grant_shizuku">Grant Shizuku permission</string>
+    <string name="install_shizuku">Install Shizuku</string>
+    <string name="shizuku_start_hint">Start Shizuku (wireless ADB), then tap again</string>
+    <string name="scene_id">Scene 0–93</string>
+    <string name="send">Send</string>
+    <string name="raw_protocol_mode">Raw Protocol Mode (Shizuku)</string>
+    <string name="settings_mode">Settings Mode (Safe)</string>
+</resources>

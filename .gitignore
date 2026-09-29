@@ -1,0 +1,22 @@
+# Android
+*.apk
+*.aab
+*.ap_
+# Gradle
+.gradle/
+build/
+**/build/
+# Local SDK location (set your own path, see README)
+local.properties
+# Signing keys
+*.jks
+*.keystore
+# IDE
+.idea/
+*.iml
+.DS_Store
+# Large OEM research binaries (not redistributable, not needed to build)
+artifacts/
+# Logs
+*.log
+probe/adb-led.log
