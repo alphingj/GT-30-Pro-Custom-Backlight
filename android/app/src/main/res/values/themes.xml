@@ -1,23 +1,36 @@
 <resources>
-    <style name="Theme.GT30Light" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_variant</item>
-        <item name="colorOnPrimary">@color/on_primary</item>
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/secondary_variant</item>
-        <item name="colorOnSecondary">@color/on_secondary</item>
-        <item name="android:colorBackground">@color/background</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorError">@color/error</item>
-        <item name="colorOnError">@color/on_error</item>
+    <style name="Theme.GT30Light" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/neon_cyan</item>
+        <item name="colorPrimaryVariant">@color/neon_cyan_dim</item>
+        <item name="colorOnPrimary">@color/abyss</item>
+        <item name="colorSecondary">@color/neon_orange</item>
+        <item name="colorSecondaryVariant">@color/neon_orange</item>
+        <item name="colorOnSecondary">@color/abyss</item>
+        <item name="android:colorBackground">@color/abyss</item>
+        <item name="colorSurface">@color/panel</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="colorError">@color/neon_red</item>
+        <item name="colorOnError">@color/ink</item>
+        <item name="android:fontFamily">@font/mecha</item>
     </style>
 
-    <style name="Theme.GT30Light.NoActionBar" parent="Theme.GT30Light">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+    <style name="Theme.GT30Light.NoActionBar" parent="Theme.GT30Light" />
 
     <style name="Theme.GT30Light.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.GT30Light.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MechaSectionLabel">
+        <item name="android:fontFamily">@font/mecha</item>
+        <item name="android:textColor">@color/neon_cyan</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.18</item>
+    </style>
+
+    <style name="MechaHudTitle">
+        <item name="android:fontFamily">@font/mecha</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

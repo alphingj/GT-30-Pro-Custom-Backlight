@@ -1,252 +1,479 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:background="@drawable/app_bg"
+    android:fillViewport="true">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.GT30Light.AppBarOverlay">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:title="@string/app_name" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical"
         android:padding="16dp">
+
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="20dp"
+                android:background="@drawable/accent_bar"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hud_caption"
+                android:fontFamily="@font/mecha"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"
+                android:textColor="@color/ink_dim"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hud_title"
+            android:fontFamily="@font/mecha"
+            android:textSize="38sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.04"
+            android:textColor="@color/ink"
+            android:layout_marginBottom="2dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/statusDot"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/core_dot"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/shizuku_not_available"/>
+
+            <TextView
+                android:id="@+id/linkState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shizuku_start_hint"
+                android:fontFamily="@font/mecha"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:textColor="@color/neon_orange"/>
+        </LinearLayout>
+
+        <!-- SETUP -->
+        <TextView
+            style="@style/MechaSectionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hud_setup"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:id="@+id/setupCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/hud_panel_plain"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center">
+            android:padding="16dp"
+            android:layout_marginBottom="18dp">
 
-            <!-- LED Status Indicator -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/statusCard"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/surface">
+                android:text="@string/setup_title"
+                android:fontFamily="@font/mecha"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.06"
+                android:textColor="@color/neon_orange"
+                android:layout_marginBottom="8dp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="24dp">
-
-                    <View
-                        android:id="@+id/ledIndicator"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@color/led_indicator_off"
-                        android:layout_marginEnd="16dp"/>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/statusTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/led_status_off"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/on_surface"/>
-
-                        <TextView
-                            android:id="@+id/statusSubtitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/shizuku_start_hint"
-                            android:textSize="14sp"
-                            android:textColor="@color/on_surface"
-                            android:alpha="0.7"/>
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/shizukuStatusIcon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_shizuku_disconnected"
-                        android:contentDescription="@string/shizuku_not_available"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Control Buttons -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="24dp">
+                android:text="@string/setup_body"
+                android:textSize="12sp"
+                android:lineSpacingExtra="3dp"
+                android:textColor="@color/ink_dim"
+                android:layout_marginBottom="12dp"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnOff"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/led_off"
-                    android:icon="@drawable/ic_power_off"
-                    app:iconGravity="textStart"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnOn"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/led_on"
-                    android:icon="@drawable/ic_power_on"
-                    app:iconGravity="textStart"/>
-            </LinearLayout>
-
-            <!-- Effect Selector -->
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/effectSelector"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="@string/effects"
-                android:inputType="none"
-                android:focusable="false"
-                android:clickable="true"
-                app:endIconMode="dropdown_menu"
-                app:boxBackgroundMode="outline"/>
-
-            <!-- Scene Test -->
-            <LinearLayout
-                android:id="@+id/sceneTestRow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:visibility="gone">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:hint="@string/scene_id"
-                    app:boxBackgroundMode="outline">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/sceneIdInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:text="22"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSendScene"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/send"/>
-            </LinearLayout>
-
-            <!-- Custom Color Picker -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/colorPickerCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                android:visibility="gone">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/custom_color"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="12dp"/>
-
-                    <com.google.android.material.slider.Slider
-                        android:id="@+id/colorRed"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:valueFrom="0"
-                        android:valueTo="255"
-                        android:value="255"
-                        android:label="@string/red"/>
-
-                    <com.google.android.material.slider.Slider
-                        android:id="@+id/colorGreen"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:valueFrom="0"
-                        android:valueTo="255"
-                        android:value="255"
-                        android:label="@string/green"/>
-
-                    <com.google.android.material.slider.Slider
-                        android:id="@+id/colorBlue"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:valueFrom="0"
-                        android:valueTo="255"
-                        android:value="255"
-                        android:label="@string/blue"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnApplyColor"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/custom_color"
-                        android:icon="@drawable/ic_palette"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Shizuku Connect Button -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnShizuku"
+                android:id="@+id/btnShizukuGuide"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="@string/setup_btn_shizuku"
+                android:fontFamily="@font/mecha"
+                app:strokeColor="@color/neon_cyan"
+                app:strokeWidth="1dp"
+                app:cornerRadius="4dp"
+                android:textColor="@color/neon_cyan"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDevSettings"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="@string/setup_btn_dev"
+                android:fontFamily="@font/mecha"
+                app:strokeColor="@color/neon_cyan"
+                app:strokeWidth="1dp"
+                app:cornerRadius="4dp"
+                android:textColor="@color/neon_cyan"/>
+        </LinearLayout>
+
+        <!-- CORE STATUS -->
+        <TextView
+            style="@style/MechaSectionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hud_status"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/hud_panel"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="18dp"
+            android:layout_marginBottom="18dp">
+
+            <View
+                android:id="@+id/ledCore"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/core_dot"
+                android:layout_marginEnd="16dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/connect_shizuku"
-                android:icon="@drawable/ic_shizuku"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/statusTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/led_status_off"
+                    android:fontFamily="@font/mecha"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/ink"/>
+
+                <TextView
+                    android:id="@+id/statusSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shizuku_start_hint"
+                    android:textSize="12sp"
+                    android:textColor="@color/ink_dim"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- POWER -->
+        <TextView
+            style="@style/MechaSectionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hud_power"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="18dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOff"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="@string/kill"
+                android:textSize="16sp"
+                android:fontFamily="@font/mecha"
+                app:strokeColor="@color/neon_red"
+                app:strokeWidth="1dp"
+                app:cornerRadius="4dp"
+                android:textColor="@color/neon_red"
+                app:icon="@drawable/ic_power_off"
+                app:iconTint="@color/neon_red"
+                app:iconGravity="textStart"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOn"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="@string/ignite"
+                android:textSize="16sp"
+                android:fontFamily="@font/mecha"
+                app:cornerRadius="4dp"
+                app:backgroundTint="@color/neon_cyan"
+                android:textColor="@color/abyss"
+                app:icon="@drawable/ic_power_on"
+                app:iconTint="@color/abyss"
                 app:iconGravity="textStart"/>
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_flash_on"
-        android:contentDescription="@string/effects"
-        android:visibility="gone"/>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <!-- EFFECT MATRIX -->
+        <TextView
+            style="@style/MechaSectionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hud_effects"
+            android:layout_marginBottom="6dp"/>
+
+        <GridLayout
+            android:id="@+id/effectGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:useDefaultMargins="false"
+            android:layout_marginBottom="18dp"/>
+
+        <!-- SPECTRUM -->
+        <TextView
+            style="@style/MechaSectionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hud_spectrum"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:id="@+id/colorPickerCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/hud_panel_plain"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="18dp"
+            android:visibility="gone">
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/colorRed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="255"
+                android:value="255"
+                app:thumbColor="@color/neon_red"
+                app:haloColor="@color/halo_red"
+                app:trackColorActive="@color/neon_red"
+                app:trackColorInactive="@color/panel_edge"/>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/colorGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="255"
+                android:value="255"
+                app:thumbColor="@color/neon_green"
+                app:haloColor="@color/halo_green"
+                app:trackColorActive="@color/neon_green"
+                app:trackColorInactive="@color/panel_edge"/>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/colorBlue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="255"
+                android:value="255"
+                app:thumbColor="@color/neon_blue"
+                app:haloColor="@color/halo_blue"
+                app:trackColorActive="@color/neon_blue"
+                app:trackColorInactive="@color/panel_edge"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnApplyColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/deploy_color"
+                android:fontFamily="@font/mecha"
+                app:cornerRadius="4dp"
+                app:backgroundTint="@color/neon_orange"
+                android:textColor="@color/abyss"
+                app:icon="@drawable/ic_palette"
+                app:iconTint="@color/abyss"
+                app:iconGravity="textStart"/>
+        </LinearLayout>
+
+        <!-- SCENE LAB -->
+        <TextView
+            style="@style/MechaSectionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hud_lab"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:id="@+id/sceneTestRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="18dp"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:hint="@string/scene_id"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/panel_edge"
+                app:hintTextColor="@color/ink_faint"
+                app:boxBackgroundColor="@color/panel">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sceneIdInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:text="22"
+                    android:textColor="@color/ink"
+                    android:fontFamily="@font/mecha"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendScene"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:text="@string/send"
+                android:fontFamily="@font/mecha"
+                app:strokeColor="@color/neon_cyan"
+                app:strokeWidth="1dp"
+                app:cornerRadius="4dp"
+                android:textColor="@color/neon_cyan"/>
+        </LinearLayout>
+
+        <!-- UPLINK -->
+        <TextView
+            style="@style/MechaSectionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hud_link"
+            android:layout_marginBottom="6dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShizuku"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/connect_shizuku"
+            android:fontFamily="@font/mecha"
+            app:strokeColor="@color/neon_orange"
+            app:strokeWidth="1dp"
+            app:cornerRadius="4dp"
+            android:textColor="@color/neon_orange"
+            app:icon="@drawable/ic_shizuku"
+            app:iconTint="@color/neon_orange"
+            app:iconGravity="textStart"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/link_hint"
+            android:textSize="11sp"
+            android:textColor="@color/ink_faint"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="18dp"/>
+
+        <TextView
+            style="@style/MechaSectionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/credits_title"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/credits_by"
+            android:fontFamily="@font/mecha"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.12"
+            android:textColor="@color/ink_dim"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/credits_link"
+            android:textSize="12sp"
+            android:textColor="@color/neon_cyan"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:layout_marginBottom="18dp"/>
+
+        <!-- SUPPORT -->
+        <TextView
+            style="@style/MechaSectionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hud_support"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/support_blurb"
+            android:fontFamily="@font/mecha"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            android:textColor="@color/ink_dim"
+            android:layout_marginBottom="8dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCoffee"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/support_button"
+            android:fontFamily="@font/mecha"
+            app:strokeColor="@color/neon_orange"
+            app:strokeWidth="1dp"
+            app:cornerRadius="4dp"
+            android:textColor="@color/neon_orange"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/support_link"
+            android:textSize="12sp"
+            android:textColor="@color/neon_cyan"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

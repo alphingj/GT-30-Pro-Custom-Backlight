@@ -9,9 +9,30 @@ and in-app Settings writes throw). This app drives the vendor HAL through
 
 - Infinix GT 30 Pro (X6873). Other Transsion models use different scene tables.
 - [Shizuku](https://shizuku.rikka.app/) installed and running (wireless ADB),
-  with permission granted to this app.
+  with permission granted to this app. **The app does nothing without this —
+  see Setup below.**
 - To build: JDK 21 and the Gradle wrapper in `android/` (downloads its own
   distribution on first run). Android SDK with platform 35 + build-tools 34.
+
+## Setup (read first — app stays locked without this)
+
+The LED HAL is not reachable from a normal app, so this app routes through
+Shizuku (no root). If you just installed the APK and the buttons are disabled
+with `LINK // STANDBY`, do this once:
+
+1. **Enable Developer options:** Settings → About phone → tap **Build number**
+   7 times until it says developer mode is on.
+2. **Enable Wireless debugging:** Settings → System → Developer options →
+   turn ON **Wireless debugging** (keep phone on Wi-Fi).
+3. **Install + start Shizuku:** install
+   [Shizuku](https://shizuku.rikka.app/) from the Play Store, open it, tap
+   **Pairing → Start via Wireless debugging**, enter the pairing code, then
+   tap **Start**. Shizuku must show Running.
+4. **Grant this app:** open GT30 Light, tap the **UPLINK** button → **Allow**
+   when Shizuku asks. `LINK // ONLINE` means ready.
+5. If Shizuku stops after reboot, reopen Shizuku and Start again — then reopen
+   this app. The same steps are shown in the in-app `// SETUP` card with
+   shortcuts to the Shizuku site and Developer options.
 
 ## Build & install
 
@@ -29,8 +50,10 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
    permission. Status shows `Connected` when ready.
 2. **LED ON** — bright white alternate-side blink (firmware scene 64).
    **LED OFF** — scene 0.
-3. Effect dropdown — user-verified firmware scenes (game, notification,
-   charging, camera shutter, music, party, …). See [docs/SCENES.md](docs/SCENES.md).
+3. Effect grid — all user-verified firmware scenes: game, notification,
+   charging, camera shutter 3s/5s/10s, music infinite/once, dim white, red
+   trail/trailer/sweep, white alt, XArena, party breathe/meteor/rhythm, blue
+   drip/flow/blink-loop. See [docs/SCENES.md](docs/SCENES.md).
 4. Custom Color — RGB sliders + Apply. Drives scene 1, the firmware's dim
    custom-glow scene (subtle by design; see limitations).
 5. Scene test row — send any raw scene byte 0–255 for experimenting.

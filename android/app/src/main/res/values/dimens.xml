@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="effect_corner">4dp</dimen>
+    <dimen name="effect_stroke">1dp</dimen>
+    <dimen name="effect_margin">4dp</dimen>
+</resources>

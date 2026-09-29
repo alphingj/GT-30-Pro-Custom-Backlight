@@ -27,6 +27,31 @@
     <string name="shizuku_start_hint">Start Shizuku (wireless ADB), then tap again</string>
     <string name="scene_id">Scene 0–93</string>
     <string name="send">Send</string>
+    <string name="hud_caption">INFINIX GT30 PRO // MECHA LIGHT WAVES</string>
+    <string name="hud_title">LIGHT FORGE</string>
+    <string name="hud_status">// CORE STATUS</string>
+    <string name="hud_power">// POWER</string>
+    <string name="hud_effects">// EFFECT MATRIX</string>
+    <string name="hud_spectrum">// SPECTRUM</string>
+    <string name="hud_lab">// SCENE LAB</string>
+    <string name="hud_link">// UPLINK</string>
+    <string name="deploy_color">DEPLOY COLOR</string>
+    <string name="ignite">IGNITE</string>
+    <string name="kill">KILL</string>
+    <string name="link_hint">HAL uplink runs through Shizuku as shell. No root.</string>
+    <string name="credits_title">// CREDITS</string>
+    <string name="credits_by">FORGED BY ALPHINGJ</string>
+    <string name="credits_link">https://github.com/alphingj</string>
+    <string name="hud_support">// SUPPORT</string>
+    <string name="support_blurb">FUEL THE FORGE — BUY ME A COFFEE</string>
+    <string name="support_button">☕ SUPPORT THE APP DEVELOPER</string>
+    <string name="support_link">https://buymeacoffee.com/alphingj</string>
+    <string name="hud_setup">// SETUP — READ FIRST</string>
+    <string name="setup_title">THIS APP NEEDS SHIZUKU — NO ROOT NEEDED</string>
+    <string name="setup_body">1) Enable Developer options: Settings → About phone → tap Build number 7×.\n2) In Developer options turn ON Wireless debugging (keep phone on Wi-Fi).\n3) Install Shizuku from Play Store, open it, tap Pairing → Start via Wireless debugging, enter the pairing code, then tap Start.\n4) Back here, tap the UPLINK button and Allow Shizuku access.\n5) When LINK shows ONLINE, IGNITE works. No Shizuku = buttons stay locked.</string>
+    <string name="setup_btn_shizuku">GET SHIZUKU</string>
+    <string name="setup_btn_dev">OPEN DEVELOPER OPTIONS</string>
+    <string name="shizuku_url">https://shizuku.rikka.app/</string>
     <string name="raw_protocol_mode">Raw Protocol Mode (Shizuku)</string>
     <string name="settings_mode">Settings Mode (Safe)</string>
 </resources>
